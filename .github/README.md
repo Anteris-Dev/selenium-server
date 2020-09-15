@@ -1,4 +1,6 @@
 # Selenium Server for PHP
+[![Check & fix styling](https://github.com/Anteris-Dev/selenium-server/workflows/Check%20&%20fix%20styling/badge.svg)](https://github.com/Anteris-Dev/selenium-server/actions?query=workflow%3A%22Check+%26+fix+styling%22)
+
 This package provides you with a Selenium server ready to run on Linux, Mac OS, or Windows.
 
 # To Install
