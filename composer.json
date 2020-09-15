@@ -6,6 +6,9 @@
             "Anteris\\Selenium\\": "./src"
         }
     },
+    "bin": [
+        "./bin/selenium"
+    ],
     "require": {
         "php-webdriver/webdriver": "^1.8",
         "symfony/console": "^5.1",
