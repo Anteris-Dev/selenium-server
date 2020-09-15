@@ -6,7 +6,6 @@ $finder = Symfony\Component\Finder\Finder::create()
     ->in([
         __DIR__ . '/bin',
         __DIR__ . '/src',
-        __DIR__ . '/tests',
     ])
     ->name('selenium')
     ->name('*.php')
