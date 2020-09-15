@@ -1,14 +1,14 @@
 <?php
 
 $finder = Symfony\Component\Finder\Finder::create()
-    ->notPath('templates/*')
+    ->notPath('.github')
     ->notPath('vendor')
     ->in([
         __DIR__ . '/bin',
         __DIR__ . '/src',
         __DIR__ . '/tests',
     ])
-    ->name('autotask')
+    ->name('selenium')
     ->name('*.php')
     ->ignoreDotFiles(true)
     ->ignoreVCS(true);
