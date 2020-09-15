@@ -49,8 +49,8 @@ class ServeCommand extends Command
         if (strpos(PHP_OS_FAMILY, 'Windows') !== false) {
             $os             = 'Windows';
             $subPath        = '/windows';
-            $geckoFile      .= '.exe';
-            $chromeFile     .= '.exe';
+            $geckoFile .= '.exe';
+            $chromeFile .= '.exe';
         }
 
         if (strpos(PHP_OS_FAMILY, 'Darwin') !== false) {
@@ -89,7 +89,7 @@ class ServeCommand extends Command
             "java",
             "-D$driver",
             "-jar",
-            $selenium
+            $selenium,
         ]);
 
         $process->setIdleTimeout(60 * 60);
