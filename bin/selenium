@@ -19,5 +19,5 @@ foreach ($possibleAutoloads as $autoload) {
 /**
  * Now run our application.
  */
-$console = new Anteris\Selenium\Console;
+$console = new Anteris\Selenium\Server\Console;
 $console->run();

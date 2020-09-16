@@ -1,8 +1,11 @@
 <?php
 
-namespace Anteris\Selenium;
+namespace Anteris\Selenium\Server;
 
-use Anteris\Selenium\Commands\ServeCommand;
+use Anteris\Selenium\Server\Commands\InstallChromeCommand;
+use Anteris\Selenium\Server\Commands\InstallCommand;
+use Anteris\Selenium\Server\Commands\InstallGeckoCommand;
+use Anteris\Selenium\Server\Commands\ServeCommand;
 use Symfony\Component\Console\Application;
 
 /**
@@ -23,6 +26,9 @@ class Console extends Application
         parent::__construct('Selenium Server', '1.0');
 
         $this->addCommands([
+            new InstallCommand,
+            new InstallGeckoCommand,
+            new InstallChromeCommand,
             new ServeCommand,
         ]);
     }

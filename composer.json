@@ -3,7 +3,7 @@
     "description": "A Selenium server that can be stopped / started with PHP.",
     "autoload": {
         "psr-4": {
-            "Anteris\\Selenium\\": "./src"
+            "Anteris\\Selenium\\Server\\": "./src"
         }
     },
     "bin": [
@@ -12,7 +12,8 @@
     "require": {
         "php-webdriver/webdriver": "^1.8",
         "symfony/console": "^5.1",
-        "symfony/process": "^5.1"
+        "symfony/process": "^5.1",
+        "guzzlehttp/guzzle": "^7.0"
     },
     "authors": [
         {
@@ -22,5 +23,9 @@
     ],
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16"
+    },
+    "scripts": {
+        "post-install-cmd": "php ./bin/selenium install",
+        "post-update-cmd": "php ./bin/selenium install"
     }
 }
