@@ -25,7 +25,7 @@ class OS
      */
     public static function oneWordName(): string
     {
-        switch(self::name()) {
+        switch (self::name()) {
             case 'Windows':
                 return 'windows';
             break;

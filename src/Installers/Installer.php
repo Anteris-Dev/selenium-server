@@ -57,7 +57,7 @@ class Installer
 
         if ($this->getDriver() === 'gecko') {
             $driver = new GeckoDriver;
-        } else if ($this->getDriver() === 'chrome') {
+        } elseif ($this->getDriver() === 'chrome') {
             $driver = new ChromeDriver;
         }
 
@@ -66,12 +66,12 @@ class Installer
          * the location and filename to download the driver to.
          */
         $outputDirectory = __DIR__ . '/../../bin/' . $this->getOs() . '/';
-        $download = $driver::getDownloadForVersion(
+        $download        = $driver::getDownloadForVersion(
             $this->getOs(),
             $this->getVersion()
         );
-        $extension = pathinfo($download, PATHINFO_EXTENSION);
-        $filename  = $this->getDriver() . '.' . $extension;
+        $extension  = pathinfo($download, PATHINFO_EXTENSION);
+        $filename   = $this->getDriver() . '.' . $extension;
         $outputFile = $outputDirectory . $filename;
 
         try {
@@ -142,14 +142,14 @@ class Installer
          */
         $directory = dirname($destination);
 
-        if (!is_dir($directory)) {
+        if (! is_dir($directory)) {
             mkdir($directory, 0777, true);
         }
 
         /**
          * Next step, create a progress bar for our file download.
          */
-        $progressBar = new ProgressBar($this->output, 100);
+        $progressBar         = new ProgressBar($this->output, 100);
         $progressBarCallback = function ($downloadTotal, $downloadedBytes) use ($progressBar) {
             $progressBar->setMaxSteps($downloadTotal);
             $progressBar->advance($downloadedBytes);
@@ -160,8 +160,8 @@ class Installer
          */
         $client = new Client([]);
         $client->get($url, [
-            'sink' => $destination,
-            'progress' => $progressBarCallback
+            'sink'     => $destination,
+            'progress' => $progressBarCallback,
         ]);
 
         /**

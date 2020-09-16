@@ -30,8 +30,8 @@ class InstallGeckoCommand extends Command
     {
         $installer = new Installer($input, $output);
         $installer->setDriver('gecko');
-        $installer->setOs( $input->getOption('os') );
-        $installer->setVersion( $input->getOption('driver-version') );
+        $installer->setOs($input->getOption('os'));
+        $installer->setVersion($input->getOption('driver-version'));
 
         return $installer->install();
     }

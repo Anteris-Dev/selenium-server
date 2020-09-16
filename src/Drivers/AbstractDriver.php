@@ -9,17 +9,17 @@ abstract class AbstractDriver
     /**
      * Returns the name of this driver.
      */
-    abstract static function driverName(): string;
+    abstract public static function driverName(): string;
 
     /**
      * Returns an array of downloadable versions of this driver.
      */
-    abstract static function downloads(): array;
+    abstract public static function downloads(): array;
 
     /**
      * Returns the latest (stable) version of this driver.
      */
-    abstract static function latestVersion(): string;
+    abstract public static function latestVersion(): string;
 
     /**
      * Retrieves the download URL based on the version and operating system.
