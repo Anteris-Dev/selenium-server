@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - Automatic download of Gecko and Chrome binaries upon install so that they don't slow down install time
+- Check for binaries on run of serve and download if they do not exist
 
 ### Changed
 - Namespace from `Anteris\Selenium` to `Anteris\Selenium\Server`

@@ -4,6 +4,7 @@ namespace Anteris\Selenium\Server\Commands;
 
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Exception\InvalidOptionException;
+use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -64,18 +65,31 @@ class ServeCommand extends Command
          */
         switch (strtolower($input->getOption('driver'))) {
             case 'gecko':
-                $driver     = "webdriver.gecko.driver=$startPath/$subPath/$geckoFile";
+                $path       = "$startPath/$subPath/$geckoFile";
+                $driver     = "webdriver.gecko.driver=$path";
                 $driverType = 'Firefox';
             break;
 
             case 'chrome':
-                $driver     = "webdriver.chrome.driver=$startPath/$subPath/$chromeFile";
+                $path       = "$startPath/$subPath/$chromeFile";
+                $driver     = "webdriver.chrome.driver=$path";
                 $driverType = 'Chromium';
             break;
 
             default:
                 throw new InvalidOptionException('Driver must be one of chrome or gecko!');
             break;
+        }
+
+        /**
+         * If we don't have the necessary binary installed, start with that.
+         */
+        if (! file_exists($path)) {
+            $result = $this->getApplication()->find('install')->run(new ArrayInput([]), $output);
+
+            if ($result === Command::FAILURE) {
+                return $result;
+            }
         }
 
         /**
