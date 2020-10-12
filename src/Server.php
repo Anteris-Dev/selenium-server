@@ -12,7 +12,7 @@ use Symfony\Component\Process\Process;
  */
 class Server
 {
-    CONST DRIVER_GECKO  = 'gecko';
+    const DRIVER_GECKO  = 'gecko';
     const DRIVER_CHROME = 'chrome';
     const OS_LINUX      = 'linux';
     const OS_MACOS      = 'macos';
