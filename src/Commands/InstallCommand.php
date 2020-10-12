@@ -2,7 +2,7 @@
 
 namespace Anteris\Selenium\Server\Commands;
 
-use Anteris\Selenium\Server\Helpers\OS;
+use Anteris\Helper\OS;
 use Anteris\Selenium\Server\Installers\Installer;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -25,7 +25,7 @@ class InstallCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $installer = new Installer($input, $output);
-        $installer->setOs(OS::oneWordName());
+        $installer->setOs(OS::shortName());
         $installer->setDriver('gecko');
         $installer->setVersion('latest');
 

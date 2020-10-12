@@ -2,6 +2,7 @@
 
 namespace Anteris\Selenium\Server\Installers;
 
+use Anteris\Helper\OS;
 use Anteris\Selenium\Server\Drivers\ChromeDriver;
 use Anteris\Selenium\Server\Drivers\GeckoDriver;
 use Anteris\Selenium\Server\Exceptions\InstallException;
@@ -13,6 +14,9 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Throwable;
 
+/**
+ * Handles the console install of Selenium drivers.
+ */
 class Installer
 {
     /** @var string The driver to be installed. */
@@ -106,7 +110,7 @@ class Installer
                 'Successfully downloaded ' .
                 $this->getDriver() . ' driver ' .
                 $this->getVersion() . ' for ' .
-                $this->getOs()
+                OS::name($this->getOs())
             );
             $this->output->writeln('');
         } catch (Throwable $error) {
@@ -149,10 +153,22 @@ class Installer
         /**
          * Next step, create a progress bar for our file download.
          */
-        $progressBar         = new ProgressBar($this->output, 100);
+
+        // Formats Megabytes in progress
+        ProgressBar::setPlaceholderFormatterDefinition('mbCurrent', function (ProgressBar $bar) {
+            return number_format($bar->getProgress() / 1048576, 2);
+        });
+
+        ProgressBar::setPlaceholderFormatterDefinition('mbMax', function (ProgressBar $bar) {
+            return number_format($bar->getMaxSteps() / 1048576, 2);
+        });
+
+        // Displays the progress
+        $progressBar         = new ProgressBar($this->output, 100, 0.001);
+        $progressBar->setFormat('%percent%% [%bar%] %mbCurrent%/%mbMax% MB');
         $progressBarCallback = function ($downloadTotal, $downloadedBytes) use ($progressBar) {
             $progressBar->setMaxSteps($downloadTotal);
-            $progressBar->advance($downloadedBytes);
+            $progressBar->setProgress($downloadedBytes);
         };
 
         /**

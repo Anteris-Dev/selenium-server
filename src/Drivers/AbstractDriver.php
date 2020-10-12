@@ -2,7 +2,7 @@
 
 namespace Anteris\Selenium\Server\Drivers;
 
-use Anteris\Selenium\Exceptions\InstallException;
+use Anteris\Selenium\Server\Exceptions\InstallException;
 
 abstract class AbstractDriver
 {

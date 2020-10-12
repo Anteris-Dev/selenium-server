@@ -2,7 +2,7 @@
 
 namespace Anteris\Selenium\Server\Commands;
 
-use Anteris\Selenium\Server\Helpers\OS;
+use Anteris\Helper\OS;
 use Anteris\Selenium\Server\Installers\Installer;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -20,7 +20,7 @@ class InstallChromeCommand extends Command
 
         // Set some options for this command
         $this->addOption('driver-version', 'd', InputOption::VALUE_OPTIONAL, 'Sets which version of ChromeDriver should be installed.', 'latest');
-        $this->addOption('os', 'o', InputOption::VALUE_OPTIONAL, 'Sets the operating system we are installing for.', OS::oneWordName());
+        $this->addOption('os', 'o', InputOption::VALUE_OPTIONAL, 'Sets the operating system we are installing for.', OS::shortName());
     }
 
     /**

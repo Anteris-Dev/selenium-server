@@ -8,6 +8,21 @@ This package provides you with a Selenium server ready to run on Linux, Mac OS, 
 composer require anteris-dev/selenium-server
 ```
 
+Next you will want to install a Selenium driver.
+
+```bash
+
+# To install Gecko Driver
+./vendor/bin/selenium install:gecko
+
+# To install Chrome Driver
+./vendor/bin/selenium install:chrome
+
+# To install both
+./vendor/bin/selenium install
+
+```
+
 # To Run the Server
 ```bash
 ./vendor/bin/selenium serve
